@@ -1,6 +1,7 @@
 package com.agus.project.dicodingtest.view;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,11 @@ import java.util.List;
 public class PlayersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<PlayerData> listPlayers;
+    private OnCLickAction onCLickAction;
 
-    public PlayersAdapter(List<PlayerData> listPlayers) {
+    public PlayersAdapter(List<PlayerData> listPlayers, OnCLickAction onCLickAction) {
         setPlayerList(listPlayers);
+        this.onCLickAction = onCLickAction;
     }
 
     void setPlayerList(List<PlayerData> listPlayers){
@@ -59,6 +62,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView playerName;
         TextView playerClub;
         TextView playerPosition;
+        CardView cardPlayer;
 
         public PlayerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,13 +70,29 @@ public class PlayersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             playerName = itemView.findViewById(R.id.player_name);
             playerClub = itemView.findViewById(R.id.player_club);
             playerPosition = itemView.findViewById(R.id.player_position);
+            cardPlayer = itemView.findViewById(R.id.card_player);
         }
 
-        void bind(PlayerData playerData){
-            Glide.with(itemView).load(playerData.getStrCutout()).into(playerImage);
+        void bind(final PlayerData playerData){
+            if(playerData.getStrCutout()!=null){
+                Glide.with(itemView).load(playerData.getStrCutout()).into(playerImage);
+            }
+            else{
+                Glide.with(itemView).load(playerData.getStrThumb()).into(playerImage);
+            }
             playerName.setText(playerData.getStrPlayer());
             playerClub.setText(playerData.getStrTeam());
             playerPosition.setText(playerData.getStrPosition());
+            cardPlayer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onCLickAction.action(playerData);
+                }
+            });
         }
+    }
+
+    public interface OnCLickAction{
+        void action(PlayerData playerData);
     }
 }

@@ -20,7 +20,7 @@
             android:layout_weight="0.3">
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarHomeVisit"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/abc_action_bar_default_height_material"
@@ -30,7 +30,7 @@
                 app:titleTextColor="#FFFFFF">
 
                 <ImageView
-                    android:id="@+id/textLeftAntarKontrak"
+                    android:id="@+id/image_account"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="right"

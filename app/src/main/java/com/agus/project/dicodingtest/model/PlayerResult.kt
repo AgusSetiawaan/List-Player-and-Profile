@@ -44,6 +44,15 @@ data class PlayerData(
         val strNationality: String,
         @SerializedName("strPosition")
         @Expose
-        val strPosition: String
+        val strPosition: String,
+        @SerializedName("strHeight")
+        @Expose
+        val strHeight: String,
+        @SerializedName("strWeight")
+        @Expose
+        val strWeight: String,
+        @SerializedName("strThumb")
+        @Expose
+        val strThumb: String
 
 )
