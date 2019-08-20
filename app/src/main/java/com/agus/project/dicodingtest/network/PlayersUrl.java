@@ -1,1 +1,1 @@
-package com.agus.project.dicodingtest.network;public class PlayersUrl {    public static String BASE_URL = "https://www.thesportsdb.com/api/v1/json/1/";}
+package com.agus.project.dicodingtest.network;public class PlayersUrl {    public static String BASE_URL = "https://www.thesportsdb.com/api/v1/json/1/";    public static String PHOTO_ACCOUNT_URL = "https://www.thesportsdb.com/images/media/player/cutout/ukdxln1557050916.png";}
