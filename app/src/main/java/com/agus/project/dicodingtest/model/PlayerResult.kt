@@ -11,48 +11,48 @@ data class PlayerResult(
 data class PlayerData(
         @SerializedName("idPlayer")
         @Expose
-        val idPlayer: String,
+        val idPlayer: String?,
         @SerializedName("idTeam")
         @Expose
-        val idTeam: String,
+        val idTeam: String?,
         @SerializedName("strPlayer")
         @Expose
-        val strPlayer: String,
+        val strPlayer: String?,
         @SerializedName("strTeam")
         @Expose
-        val strTeam: String,
+        val strTeam: String?,
         @SerializedName("dateBorn")
         @Expose
-        val dateBorn: String,
+        val dateBorn: String?,
         @SerializedName("strNumber")
         @Expose
-        val strNumber: String,
+        val strNumber: String?,
         @SerializedName("dateSigned")
         @Expose
-        val dateSigned: String,
+        val dateSigned: String?,
         @SerializedName("strWage")
         @Expose
-        val strWage: String,
+        val strWage: String?,
         @SerializedName("strDescriptionEN")
         @Expose
-        val strDescriptionEN: String,
+        val strDescriptionEN: String?,
         @SerializedName("strCutout")
         @Expose
-        val strCutout: String,
+        val strCutout: String?,
         @SerializedName("strNationality")
         @Expose
-        val strNationality: String,
+        val strNationality: String?,
         @SerializedName("strPosition")
         @Expose
-        val strPosition: String,
+        val strPosition: String?,
         @SerializedName("strHeight")
         @Expose
-        val strHeight: String,
+        val strHeight: String?,
         @SerializedName("strWeight")
         @Expose
-        val strWeight: String,
+        val strWeight: String?,
         @SerializedName("strThumb")
         @Expose
-        val strThumb: String
+        val strThumb: String?
 
 )

@@ -1,5 +1,9 @@
 package com.agus.project.dicodingtest.network;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import com.agus.project.dicodingtest.BuildConfig;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,5 +50,11 @@ public class PlayersDataSource {
             service = retrofit.create(DataNetworkService.class);
         }
         return service;
+    }
+
+    public static Boolean isInternetOn(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return (activeNetworkInfo != null && activeNetworkInfo.isConnected());
     }
 }
