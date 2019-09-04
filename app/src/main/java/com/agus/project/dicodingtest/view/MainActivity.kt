@@ -1,6 +1,7 @@
 package com.agus.project.dicodingtest.view
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -59,6 +60,11 @@ class MainActivity : AppCompatActivity(), DataPresenter.View, PlayersAdapter.OnC
             startActivity(Intent(this, AboutActivity::class.java))
         }
 
+        try_connect.setOnClickListener(View.OnClickListener {
+            dataPresenter.getEverything(133612L)
+            layout_errcon.visibility = View.GONE
+        })
+
 
 
     }
@@ -79,7 +85,8 @@ class MainActivity : AppCompatActivity(), DataPresenter.View, PlayersAdapter.OnC
     }
 
     override fun onErrorConnection() {
-        Toast.makeText(applicationContext,"Cek koneksi internet anda",Toast.LENGTH_LONG).show()
+        layout_errcon.visibility = View.VISIBLE
+//        Toast.makeText(applicationContext,"Cek koneksi internet anda",Toast.LENGTH_LONG).show()
     }
 
     override fun action(playerData: PlayerData) {
@@ -100,12 +107,18 @@ class MainActivity : AppCompatActivity(), DataPresenter.View, PlayersAdapter.OnC
 
     override fun onBackPressed() {
         if(doubleBackToExitPressedOnce){
-            super.onBackPressed()
-            return
+//            super.onBackPressed()
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+        else{
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this,"Please click BACK again to exit",Toast.LENGTH_SHORT).show()
         }
 
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this,"Please click BACK again to exit",Toast.LENGTH_SHORT).show()
+
 
         Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false },2000)
     }
